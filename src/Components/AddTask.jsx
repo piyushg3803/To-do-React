@@ -20,7 +20,7 @@ function AddTask(props) {
   };
 
   return (
-    <div className="bg-white w-1/3 max-lg:w-1/2 max-md:w-[90%] m-auto rounded-3xl text-center p-4">
+    <div className="bg-white w-1/3 max-lg:w-1/2 max-md:w-[90%] m-auto rounded-3xl text-center p-4 drop-shadow-xl">
       <h1 className="text-3xl">Add a New Task</h1>
       <div className="my-6 w-full">
         <TextField
@@ -35,7 +35,7 @@ function AddTask(props) {
           onKeyDown={addOnEnter}
         />
         <button
-          className="bg-[#1d66ed] text-white mt-6 p-2 px-10 rounded-xl"
+          className="bg-[#1d66ed] hover:bg-[#1a54c0] transition-all hover:translate-z-1 text-white mt-6 p-2 px-10 rounded-xl"
           onClick={handleAddTask}
         >
           Add Task
