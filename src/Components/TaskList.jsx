@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function TaskList(props) {
   const [complete, setComplete] = useState({});
@@ -10,10 +11,17 @@ function TaskList(props) {
     }));
   };
 
+  const handleDelete = (task) => {
+    props.onDeleteTask(task);
+  };
+
   return (
     <>
       {props.tasks.map((task) => (
-        <div
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0.8, opacity: 1 }}
           key={task.id}
           className={`bg-white w-1/3 max-lg:w-1/2 max-md:w-[90%] m-auto rounded-xl p-4 my-4 flex max-md:block max-md:text-center justify-between drop-shadow-xl ${
             complete[task.id] ? "opacity-65" : ""
@@ -31,7 +39,7 @@ function TaskList(props) {
               className={`text-white p-2 px-4 rounded-xl me-4 ${
                 complete[task.id]
                   ? "bg-red-600 hover:bg-red-700"
-                  : "bg-green-700 hover:bg-green-800 "
+                  : "bg-green-700 hover:bg-green-800"
               } transition-all`}
               onClick={() => handleComplete(task.id)}
             >
@@ -39,14 +47,16 @@ function TaskList(props) {
             </button>
             <button
               className={`text-white p-2 px-4 rounded-xl ${
-                complete[task.id] ? "bg-[#1d66ed] hover:bg-[#1a54c0]" : "bg-red-600 hover:bg-red-700"
+                complete[task.id]
+                  ? "bg-[#1d66ed] hover:bg-[#1a54c0]"
+                  : "bg-red-600 hover:bg-red-700"
               } transition-all`}
-              onClick={() => props.onDeleteTask(task.id)}
+              onClick={() => handleDelete(task.id)}
             >
               {complete[task.id] ? "Remove" : "Delete"}
             </button>
           </div>
-        </div>
+        </motion.div>
       ))}
     </>
   );

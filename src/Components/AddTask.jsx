@@ -1,5 +1,6 @@
 import { TextField } from "@mui/material";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function AddTask(props) {
   const [task, setTask] = useState("");
@@ -34,12 +35,14 @@ function AddTask(props) {
           }}
           onKeyDown={addOnEnter}
         />
-        <button
-          className="bg-[#1d66ed] hover:bg-[#1a54c0] transition-all hover:translate-z-1 text-white mt-6 p-2 px-10 rounded-xl"
+        <motion.button
+          whileTap={{ scale: 0.5 }}
+          whileHover={{ scale: 1.05 }}
+          className="bg-[#1d66ed] transition-all hover:translate-z-1 text-white mt-6 p-2 px-10 rounded-xl"
           onClick={handleAddTask}
         >
           Add Task
-        </button>
+        </motion.button>
       </div>
     </div>
   );
