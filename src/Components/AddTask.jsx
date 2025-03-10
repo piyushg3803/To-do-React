@@ -24,10 +24,15 @@ function AddTask(props) {
   return (
     <>
       <div className="bg-white w-1/3 max-lg:w-1/2 max-md:w-[90%] m-auto rounded-3xl text-center p-4 drop-shadow-xl">
-        <h1 className="text-3xl">Add a New Task</h1>
+        <h1 className="text-3xl font-bold">Add a New Task</h1>
         <div className="my-6 w-full">
           <TextField
-            sx={{ "&.MuiTextField-root": { width: "90%" } }}
+            sx={{
+              width: "90%",
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "20px",
+              }
+            }}
             id="outlined-basic"
             label="New Task"
             variant="outlined"
